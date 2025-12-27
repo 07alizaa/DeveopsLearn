@@ -1,11 +1,5 @@
--- Create database
-CREATE DATABASE todo_db;
-
--- Connect to the database
-\c todo_db;
-
 -- Create todos table
-CREATE TABLE todos (
+CREATE TABLE IF NOT EXISTS todos (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   description TEXT,

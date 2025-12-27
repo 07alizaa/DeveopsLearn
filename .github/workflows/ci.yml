@@ -1,0 +1,70 @@
+# =============================================================================
+# CI Pipeline - Basic Version
+# =============================================================================
+# A GitHub Actions workflow file has 3 main parts:
+#   1. name     - What to call this workflow
+#   2. on       - When to run it (triggers)
+#   3. jobs     - What to do when it runs
+
+name: CI Pipeline
+
+# =============================================================================
+# PART 1: TRIGGERS (on)
+# When should this workflow run?
+# =============================================================================
+on:
+  push:
+    branches: [main]      # Run when code is pushed to main
+  pull_request:
+    branches: [main]      # Run when a PR is opened to main
+
+# =============================================================================
+# PART 2: JOBS
+# What work needs to be done?
+# =============================================================================
+jobs:
+  # ---------------------------------------------------------------------------
+  # Job: Build Backend
+  # ---------------------------------------------------------------------------
+  build-backend:
+    runs-on: ubuntu-latest    # Run on a Ubuntu virtual machine
+
+    steps:
+      # Step 1: Get the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Step 3: Install backend dependencies
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./backend
+
+  # ---------------------------------------------------------------------------
+  # Job: Build Frontend
+  # ---------------------------------------------------------------------------
+  build-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./frontend
+
+      # Step 4: Build the React app
+      - name: Build frontend
+        run: npm run build
+        working-directory: ./frontend
