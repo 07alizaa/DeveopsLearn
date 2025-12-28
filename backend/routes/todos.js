@@ -23,6 +23,9 @@ router.post('/', async (req, res) => {
     }
     const name ="Sample Name";
     const name2 ="Sample Name2";
+    
+     console.log(`Creating todo with title: ${title}, description: ${description}, name: ${name}, name2: ${name2}`);
+     
     const result = await pool.query(
       'INSERT INTO todos (title, description, completed) VALUES ($1, $2, $3) RETURNING *',
       [title, description || '', false]
