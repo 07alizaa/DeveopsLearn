@@ -64,7 +64,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Todo List</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">Task Management</h1>
           <p className="text-gray-600">Manage your tasks efficiently</p>
         </div>
 
@@ -81,7 +81,7 @@ function App() {
         <div className="space-y-3">
           {loading ? (
             <div className="text-center py-8">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-pink-600"></div>
               <p className="mt-2 text-gray-600">Loading todos...</p>
             </div>
           ) : todos.length === 0 ? (
