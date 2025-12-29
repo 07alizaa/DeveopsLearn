@@ -79,7 +79,7 @@ jobs:
         run: npm run build
         working-directory: ./frontend
 
-deploy:
+  deploy:
     needs:
       - build-backend
       - build-frontend
